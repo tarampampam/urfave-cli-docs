@@ -1,0 +1,65 @@
+{{ define "flags" }}
+| Name | Description | Default value | Environment variables |
+|------|-------------|:-------------:|-----------------------|
+{{ range $flag := . -}}
+| `{{ $flag.Name }}` {{ if $flag.Aliases }}(`{{ join $flag.Aliases "`, `" }}`) {{ end }} | {{ $flag.Usage }} | {{ if $flag.Default }}`{{ $flag.Default }}`{{ end }} | {{ if $flag.EnvVars }}`{{ join $flag.EnvVars "`, `" }}`{{ end }} |
+{{ end }}
+{{ end }}
+
+<!-- Documentation inside this block generated automatically; DO NOT EDIT -->
+
+## CLI interface{{ if .Name }} - {{ .Name }}{{ end }}
+
+{{ if .Usage }}{{ .Usage }}.{{ end }}
+{{ if .UsageText }}
+> {{ .UsageText }}.
+{{ end }}
+Usage:
+
+```bash
+$ {{ .AppPath }} [GLOBAL FLAGS] command [SUBCOMMAND] [COMMAND FLAGS] [ARGUMENTS...]
+```
+{{ if .GlobalFlags }}
+Global flags:
+
+{{ template "flags" .GlobalFlags }}
+
+{{ end -}}
+{{ if .Commands -}}
+{{   range $cmd := .Commands -}}
+### `{{ $cmd.Name }}` command{{ if $cmd.Aliases }} (aliases: `{{ join $cmd.Aliases "`, `" }}`){{ end }}
+{{     if $cmd.Usage }}
+{{       $cmd.Usage }}.
+{{     end }}
+{{-    if $cmd.UsageText }}
+> {{ $cmd.UsageText }}.
+{{     end }}
+{{-    if $cmd.Description }}
+{{       $cmd.Description }}.
+{{     end }}
+{{     if $cmd.Flags -}}
+The following flags are supported:
+
+{{       template "flags" $cmd.Flags }}
+{{     end -}}
+{{     if $cmd.SubCommands -}}
+{{       range $subCmd := $cmd.SubCommands -}}
+#### **`{{ $subCmd.Name }}`** sub-command{{ if $subCmd.Aliases }} (aliases: `{{ join $subCmd.Aliases "`, `" }}`){{ end }}
+{{         if $subCmd.Usage }}
+{{           $subCmd.Usage }}.
+{{         end }}
+{{-        if $subCmd.UsageText }}
+> {{ $subCmd.UsageText }}.
+{{         end }}
+{{-        if $subCmd.Description }}
+{{           $subCmd.Description }}.
+{{         end }}
+{{         if $subCmd.Flags -}}
+Sub-command flags:
+{{           template "flags" $subCmd.Flags }}
+{{         end -}}
+{{       end -}}
+{{     end -}}
+{{   end }}
+{{- end }}
+<!-- End of automatically generated block -->
