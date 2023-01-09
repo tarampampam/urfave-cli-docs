@@ -6,7 +6,7 @@ package main
 import (
 	"os"
 
-	"gh.tarampamp.am/urfave-cli-docs/markdown"
+	"github.com/tarampampam/urfave-cli-docs/markdown"
 
 	"example"
 )

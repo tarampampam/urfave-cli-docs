@@ -1,4 +1,4 @@
-module gh.tarampamp.am/urfave-cli-docs
+module github.com/tarampampam/urfave-cli-docs
 
 go 1.16
 

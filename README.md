@@ -7,6 +7,10 @@
 
 For [urfave](https://github.com/urfave/cli)-based applications.
 
+```bash
+$ go get github.com/tarampampam/urfave-cli-docs/markdown@latest
+```
+
 ## Usage example
 
 Add to your `README.md` file the following lines:
@@ -27,7 +31,7 @@ package main
 import (
 	"os"
 
-	"gh.tarampamp.am/urfave-cli-docs/markdown"
+	"github.com/tarampampam/urfave-cli-docs/markdown"
 
 	"example"
 )

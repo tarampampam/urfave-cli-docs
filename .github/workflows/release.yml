@@ -23,4 +23,6 @@ jobs:
 
       - name: Get the module using proxy
         env: {GOPROXY: '${{ matrix.proxy }}'}
-        run: go get -v -x -u "github.com/tarampampam/urfave-cli-docs@${{ steps.slug.outputs.tag-name }}"
+        run: |
+          go get -v -x -u "github.com/tarampampam/urfave-cli-docs@${{ steps.slug.outputs.tag-name }}"
+          go get -v -x -u "github.com/tarampampam/urfave-cli-docs/markdown@${{ steps.slug.outputs.tag-name }}"

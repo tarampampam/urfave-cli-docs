@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/urfave/cli/v2"
 
-	"gh.tarampamp.am/urfave-cli-docs/markdown"
+	"github.com/tarampampam/urfave-cli-docs/markdown"
 )
 
 func TestReplaceBetween(t *testing.T) {
