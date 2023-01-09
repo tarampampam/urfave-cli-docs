@@ -8,7 +8,7 @@
 For [urfave](https://github.com/urfave/cli)-based applications.
 
 ```bash
-$ go get github.com/tarampampam/urfave-cli-docs/markdown@latest
+$ go get github.com/tarampampam/urfave-cli-docs@latest
 ```
 
 ## Usage example
