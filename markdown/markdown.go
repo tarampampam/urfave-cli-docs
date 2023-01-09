@@ -32,13 +32,13 @@ func WithTemplate(tmpl string) Option { return func(m *Markdown) { m.tmpl = tmpl
 func WithAppPath(path string) Option { return func(m *Markdown) { m.appPath = path } }
 
 //go:embed markdown.tmpl
-var defaultMarkdownTemplate string
+var DefaultMarkdownTemplate string
 
 // Render renders the markdown documentation for the given cli app.
 func Render(app *cli.App, opt ...Option) (string, error) {
 	var md = Markdown{ // defaults
 		appPath: "./app",
-		tmpl:    defaultMarkdownTemplate,
+		tmpl:    DefaultMarkdownTemplate,
 	}
 
 	for _, option := range opt {
