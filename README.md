@@ -1,49 +1,87 @@
-# urfave CLI docs
+# CLI docs generator
 
 ![go_version][badge_go_version]
 [![tests][badge_tests]][actions]
 [![coverage][badge_coverage]][coverage]
 [![docs][badge_docs]][docs]
 
-<!-- Documentation inside this block generated automatically; DO NOT EDIT -->
+For [urfave](https://github.com/urfave/cli)-based applications.
 
-CLI interface - myapp
----------------------
+## Usage example
 
-does awesome things.
+Add to your `README.md` file the following lines:
 
-> myapp does awesome things.
-
-Usage:
-
-```bash
-$ ./app [GLOBAL FLAGS] command [SUBCOMMAND] [COMMAND FLAGS] [ARGUMENTS...]
+```markdown
+<!--GENERATED:CLI_DOCS-->
+<!--/GENERATED:CLI_DOCS-->
 ```
 
-Global flags:
+Next, create a file `generate_readme.go`:
 
-| Name                        | Description        | Default value | Environment variables |
-|-----------------------------|--------------------|:-------------:|-----------------------|
-| `--app-string-flag` (`-a`\) | app string flag    |   `default`   | `STRING_FLAG_ENV_VAR` |
-| `--app-int-flag`            | app int flag       |     `123`     | `INT_FLAG_ENV_VAR`    |
-| `--l`                       | short app int flag |     `321`     |                       |
+```go
+//go:build docs
+// +build docs
 
-### `cmd` command
+package main
 
-does awesome things.
+import (
+	"os"
 
-The following flags are supported:
+	"gh.tarampamp.am/urfave-cli-docs/markdown"
 
-| Name            | Description | Default value | Environment variables |
-|-----------------|-------------|:-------------:|-----------------------|
-| `--string-flag` | string flag |   `default`   | `STRING_FLAG_ENV_VAR` |
-| `--int-flag`    | int flag    |     `123`     | `INT_FLAG_ENV_VAR`    |
+	"example"
+)
 
-#### **`cmd subcmd`** sub-command
+func main() {
+	var app = example.NewApp() // <-- your app here
 
-does awesome things.
+	// generate markdown documentation for the app
+	docs, err := markdown.Render(app)
+	if err != nil {
+		panic(err)
+	}
 
-<!-- End of automatically generated block -->
+	const readmeFilePath = "./readme.md"
+
+	// read readme file
+	readme, err := os.ReadFile(readmeFilePath)
+	if err != nil {
+		panic(err)
+	}
+
+	const start, end = "<!--GENERATED:CLI_DOCS-->", "<!--/GENERATED:CLI_DOCS-->"
+
+	// replace the documentation section in the readme file
+	updated, err := markdown.ReplaceBetween(start, end, string(readme), docs)
+	if err != nil {
+		panic(err)
+	}
+
+	// write the updated readme file
+	if err = os.WriteFile(readmeFilePath, []byte(updated), 0664); err != nil {
+		panic(err)
+	}
+}
+```
+
+Then, create a file `generate.go` for generating the documentation:
+
+```go
+package example
+
+// Run using `go generate -tags docs ./...`
+
+// Generate CLI usage documentation and write it to the README.md file (between special tags).
+//go:generate go run generate_readme.go
+```
+
+And run code generation:
+
+```bash
+$ go generate -tags docs ./...
+```
+
+Viola! Now, open your readme file and watch the result. Example can be found [here](example/readme.md).
 
 [badge_tests]:https://img.shields.io/github/actions/workflow/status/tarampampam/urfave-cli-docs/tests.yml?branch=master
 [badge_coverage]:https://img.shields.io/codecov/c/github/tarampampam/urfave-cli-docs/master.svg?maxAge=30
