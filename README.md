@@ -23,8 +23,8 @@ Add to your `README.md` file the following lines:
 Next, create a file `generate_readme.go`:
 
 ```go
-//go:build docs
-// +build docs
+//go:build ignore
+// +build ignore
 
 package main
 
@@ -71,7 +71,12 @@ func main() {
 Then, create a file `generate.go` for generating the documentation:
 
 ```go
+//go:build docs
+// +build docs
+
 package example
+
+import _ "github.com/tarampampam/urfave-cli-docs"
 
 // Run using `go generate -tags docs ./...`
 
