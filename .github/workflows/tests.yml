@@ -55,9 +55,9 @@ jobs:
 
       - run: go mod download
 
-      - run: go run ./examples/simple/
-
       - run: go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
+
+      - run: go generate -tags docs ./...
 
       - name: Upload Coverage report to CodeCov
         continue-on-error: true
