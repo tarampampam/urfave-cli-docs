@@ -1,4 +1,9 @@
+//go:build docs
+// +build docs
+
 package example
+
+import _ "github.com/tarampampam/urfave-cli-docs/markdown"
 
 // Run using `go generate -tags docs ./...`
 

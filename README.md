@@ -76,7 +76,7 @@ Then, create a file `generate.go` for generating the documentation:
 
 package example
 
-import _ "github.com/tarampampam/urfave-cli-docs"
+import _ "github.com/tarampampam/urfave-cli-docs/markdown"
 
 // Run using `go generate -tags docs ./...`
 
