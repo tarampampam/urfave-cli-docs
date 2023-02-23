@@ -3,8 +3,8 @@ module example
 go 1.19
 
 require (
-	github.com/tarampampam/urfave-cli-docs v0.0.0-00010101000000-000000000000
-	github.com/tarampampam/urfave-cli-docs/markdown v0.0.0-00010101000000-000000000000
+	gh.tarampamp.am/urfave-cli-docs v0.0.0-00010101000000-000000000000
+	gh.tarampamp.am/urfave-cli-docs/markdown v0.0.0-00010101000000-000000000000
 	github.com/urfave/cli/v2 v2.23.7
 )
 
@@ -19,6 +19,6 @@ require (
 )
 
 replace (
-	github.com/tarampampam/urfave-cli-docs => ../
-	github.com/tarampampam/urfave-cli-docs/markdown => ../markdown
+	gh.tarampamp.am/urfave-cli-docs => ../
+	gh.tarampamp.am/urfave-cli-docs/markdown => ../markdown
 )

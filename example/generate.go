@@ -3,7 +3,7 @@
 
 package example
 
-import _ "github.com/tarampampam/urfave-cli-docs/markdown"
+import _ "gh.tarampamp.am/urfave-cli-docs/markdown"
 
 // Run using `go generate -tags docs ./...`
 

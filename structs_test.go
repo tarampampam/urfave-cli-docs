@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	urfaveCliDocs "github.com/tarampampam/urfave-cli-docs"
+	urfaveCliDocs "gh.tarampamp.am/urfave-cli-docs"
 )
 
 func TestPrepareMultilineString(t *testing.T) {

@@ -13,7 +13,7 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 
-	cliDocs "github.com/tarampampam/urfave-cli-docs"
+	cliDocs "gh.tarampamp.am/urfave-cli-docs"
 )
 
 // Markdown is a markdown formatter.

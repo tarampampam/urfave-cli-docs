@@ -8,7 +8,7 @@
 For [urfave](https://github.com/urfave/cli)-based applications.
 
 ```bash
-$ go get github.com/tarampampam/urfave-cli-docs@latest
+$ go get gh.tarampamp.am/urfave-cli-docs@latest
 ```
 
 ## Usage example
@@ -31,7 +31,7 @@ package main
 import (
 	"os"
 
-	"github.com/tarampampam/urfave-cli-docs/markdown"
+	"gh.tarampamp.am/urfave-cli-docs/markdown"
 
 	"example"
 )
@@ -76,7 +76,7 @@ Then, create a file `generate.go` for generating the documentation:
 
 package example
 
-import _ "github.com/tarampampam/urfave-cli-docs/markdown"
+import _ "gh.tarampamp.am/urfave-cli-docs/markdown"
 
 // Run using `go generate -tags docs ./...`
 
@@ -94,8 +94,8 @@ Viola! Now, open your readme file and watch the result. Example can be found [he
 
 [badge_tests]:https://img.shields.io/github/actions/workflow/status/tarampampam/urfave-cli-docs/tests.yml?branch=master
 [badge_coverage]:https://img.shields.io/codecov/c/github/tarampampam/urfave-cli-docs/master.svg?maxAge=30
-[badge_docs]:https://pkg.go.dev/badge/mod/github.com/tarampampam/urfave-cli-docs
+[badge_docs]:https://pkg.go.dev/badge/mod/gh.tarampamp.am/urfave-cli-docs
 [badge_go_version]:https://img.shields.io/badge/go%20version-%3E=1.16-61CFDD.svg
 [actions]:https://github.com/tarampampam/urfave-cli-docs/actions
 [coverage]:https://codecov.io/gh/tarampampam/urfave-cli-docs
-[docs]:https://pkg.go.dev/github.com/tarampampam/urfave-cli-docs
+[docs]:https://pkg.go.dev/gh.tarampamp.am/urfave-cli-docs
